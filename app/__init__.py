@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Application module
 
 Configures the quart app
