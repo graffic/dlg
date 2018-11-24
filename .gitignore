@@ -1,0 +1,6 @@
+# Code coverage
+.coverage
+.coverage.*
+
+# VSCode
+.vscode
