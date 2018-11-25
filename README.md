@@ -7,9 +7,9 @@ The application endpoint is available here: http://dlgassignment.eu-gb.mybluemix
 
 ## Introduction
 
-This repo contains the technical assigment for DLG using python.
+This repository is the python technical assigment for DLG. The README contains the assumptions and all the points I consider worth of notice with my take on them. 
 
-This documents contains the assumptions and all the points I consider worth of notice with my take on them.
+Given these assigments take some of my free time, I usually try to learn something new. For this one I wanted to try: [pipenv dependency manager](https://pipenv.readthedocs.io/en/latest/), [quart web framework](https://gitlab.com/pgjones/quart), and (IBM Cloud)[https://www.ibm.com/cloud/]
 
 ### Requirements
 
@@ -57,3 +57,14 @@ There is code to test, although not much. The service has two kind of tests:
 
 * Integration (`test_integration.py`): Test the entire application as a black box.
 * Unit (`test_total.py`): There are unit tests only for the total module.
+
+### Deploy
+
+The app is deployed into Bluemix Cloud Foundry (IBM Cloud) as a container using travis-ci
+
+### Missing
+
+There are some things that didn't make it into the assignment due to time constraints.
+
+* Telemetry, so we can monitor if the app performance and if it is working.
+* Blueprint of the endpoint.
