@@ -14,12 +14,15 @@ before_deploy:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 - docker push docker.io/graffic/dlg
 deploy:
-  provider: cloudfoundry
+  edge: true
+  provider: bluemixcloudfoundry
   api: https://api.eu-gb.bluemix.net
   username: javier.gonel@glispamedia.com
   password:
     secure: KXNzcvCpfhf3oMmYfndHHh0okJkYNim9knacKCa1UVgNagUWPEGhY3L9nha7Z9Ww/MZkmomcgdiD4tC+PqeMGok1qndV0aMEQEOFOpClnu6ZQMxPplhRWl0DmRJQKcWVzHq2ndongi7wTZXodlefw7Djup0bIWaxq65n5Rs0VRwbGK+PXWsPu0IwhWAweFz2X1kN4y/8ig2f0n5EXjxcNKLkBMYL2EBiIFqyZbfY7XbqjKodla7Ic6LiPD2cRvzSF02AqH1eX3KxaFbEQOy7CRvW7nFoNH70vHi3kWewv1+ljIA4pO3qt3Q32CbYE8ANXHmTxnzLTYn8BVgiegYX4Aq+Mod7l5TN8xt7zsk7DjssHMJymH++n667cNUs4O450gya4XYgIAb+NieZ5kjfzDFR15wEvt8gSZH01ix0lDBBolNS4SQqqgTrg4JDQAu2G5SFodxETkTv6SynbEt9iRsQxpZ/jUyDXlX5qSV5pctu3ZNtPMZCg2qdZzJEPkIQMSAalzYrJUU/XgdIl8wMiaCRUmAFM26d3GC6IdUy5xR9ZbPoUSKzs+UL7Gdx5kIITWnbfiRzGmc0Gh7qo1gNjafiwD3vTjtkEeI5cjwTeTgRACmG6IdZPVsjfMgqzBYpXEzgU3pDCjbZA7Hi2vpLWfFPD+J1hbmR+/qHXVhFAPw=
   organization: javier.gonel@glispamedia.com
   space: dev
+  manifest: cloudfoundry-manifest.yml
+  region: eu-gb
   on:
-    repo: graffic/dlg
+    branch: master

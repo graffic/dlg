@@ -1,0 +1,7 @@
+---
+applications:
+- name: DLGAssignment
+  memory: 256M
+  instances: 1
+  docker:
+    image: docker.io/graffic/dlg
