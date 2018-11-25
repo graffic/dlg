@@ -1,6 +1,6 @@
 language: python
 dist: xenial
-python: "3.7"
+python: '3.7'
 install:
 - pip install pipenv
 - pipenv sync -d
@@ -9,3 +9,17 @@ script:
 - flake8
 - pytest --cov=app
 after_success: codecov
+before_deploy:
+- docker build -t docker.io/graffic/dlg .
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker push docker.io/graffic/dlg
+deploy:
+  provider: cloudfoundry
+  api: https://api.eu-gb.bluemix.net
+  username: javier.gonel@glispamedia.com
+  password:
+    secure: OTFVQzdt3R+aUve9xwLyCu8+idhBqEDHcDJiytBIfXFCTM9WqzSJDavUAgPJraarDsW9Msgox+kl2bx/dklKBYzB4QNr25w+tO8dXOdhD1PogleubrOX5zEzvnEYmOJBopFuM0RePuQ0NYHDLaaKE0v9NIB6kjnl5i58vpu1zOdDsbHBVxyPYpSiOw6O37cIvh9+5JbLsM1O7LvwRuuVPZrlCdiQ83KNdnfEFm8+dOEI7QrFjpEjhtWrZvq4M+VBQDGj6VmI59nKt2Kyw38kDOLUmCdTiQVRBMD4qmhBnvqmtFHc6qebdfoKqgKgyjF4BOKGqjve2dwl5Yj+1DeGlMXBaWdhAgcxuZwyUVfFQ4R1Jdf8X8S/+kUabHzruQe4K2qlix5R0KHEK//dMF0nK2WQsItqeUkiof2ccb9MBdfU3JxIqlfjr71r0z/Axc0PP0T6NRF9eKAe9x3N0+6xr8cIC4xlUPMWRvw7H7d+4HfxZNVjQ5paCtOZRZB/17r3XvIyLktcKDRgED8jYkdhb5EdvVoz/mvD42RGCnRVAtFqO0ynuQXQr02YcBi5SY6By6w7CMob+0RFRrR6tf7zZ7al8n6MTueUFpWL2AOq1lr/2a3j3FMCLGsIgc6B/c0bCdD0UT5hBdN9S/g0GzI0cG5uYBK9GeGnMXl/abWEFPs=
+  organization: javier.gonel@glispamedia.com
+  space: dev
+  on:
+    repo: graffic/dlg
