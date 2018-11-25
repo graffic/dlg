@@ -1,6 +1,7 @@
 from app import build_app
 import pytest
 
+
 @pytest.mark.asyncio
 async def test_get():
     app = build_app()

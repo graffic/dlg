@@ -13,11 +13,13 @@ total = quart.Blueprint('total', __name__)
 # Process pool for CPU bound sums
 POOL = ProcessPoolExecutor()
 
+
 def get_api() -> NumbersAPI:
     """Gets and creates the NumbersAPI client"""
     if 'numbers_api' not in quart.g:
         quart.g.numbers_api = NumbersAPI()
     return quart.g.numbers_api
+
 
 @total.route('')
 async def total_endpoint() -> quart.Response:
