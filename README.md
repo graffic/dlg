@@ -7,9 +7,9 @@ The application endpoint is available here: http://dlgassignment.eu-gb.mybluemix
 
 ## Introduction
 
-This repository is the python technical assigment for DLG. The README contains the assumptions and all the points I consider worth of notice with my take on them. 
+This repository is the python technical assignment for DLG. The README contains the assumptions and all the points I consider worth of notice with my take on them. 
 
-Given that these assigments take some of my free time, I usually try to learn something new. For this one I wanted to try: [pipenv dependency manager](https://pipenv.readthedocs.io/en/latest/), [quart web framework](https://gitlab.com/pgjones/quart), and (IBM Cloud)[https://www.ibm.com/cloud/]
+Given that these assignments take some of my free time, I usually try to learn something new. For this one I wanted to try: [pipenv dependency manager](https://pipenv.readthedocs.io/en/latest/), [quart web framework](https://gitlab.com/pgjones/quart), and (IBM Cloud)[https://www.ibm.com/cloud/]
 
 ### Requirements
 
@@ -34,7 +34,7 @@ Last but not least, for a development environment make sure you have python `3.7
 
 Files are organized into two directories `app` with the application and `tests` for the tests of the application.
 
-The application uses `pipenv` to manage dependencies as an better alternative to a `requirements.txt` file when developing applications.
+The application uses `pipenv` to manage dependencies as a better alternative to a `requirements.txt` file when developing applications.
 
 ### The service
 
@@ -43,12 +43,12 @@ The service provides an HTTP API using the `quart` framework. It is like `flask`
 Since there is only one endpoint some things might seem overengineered a bit:
 
 * There is a `numbers_api` module assuming that a client for the real API providing the numbers would exist. It also simulates a delay of one second.
-* The endpoint is in a blueprint (even if it is only one), to show a way to organice different endpoint groups in their own files.
-* The app object creation it's in its in own file, even if it's only two lines.
+* The endpoint is in a blueprint (even if it is only one), to show a way to organize different endpoint groups in their own files.
+* The app object creation has its own file, even if it is only two lines.
 
 #### The sum
 
-Even if the service uses asyncio, the sum of a large amount of numbers as the one given in the example can take around `100ms`. During that CPU bound task the server wont be able to respond unless there is more than one worker.
+Even if the service uses asyncio, the sum of a large number of elements as the one given in the example can take around `100ms`. During that CPU bound task, the server won't be able to respond unless there is more than one worker.
 
 Taking the CPU bound task into an external process using a [`ProcessPoolExecutor`](https://docs.python.org/3/library/concurrent.futures.html#processpoolexecutor) and `loop.run_in_executor` adds around `2 seconds`. So I chose to let it run in the event loop.
 
