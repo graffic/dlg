@@ -3,8 +3,6 @@
 [![Build Status](https://travis-ci.org/graffic/dlg.svg?branch=master)](https://travis-ci.org/graffic/dlg)
 [![codecov](https://codecov.io/gh/graffic/dlg/branch/master/graph/badge.svg)](https://codecov.io/gh/graffic/dlg)
 
-The application endpoint is available here: http://dlgassignment.eu-gb.mybluemix.net/total
-
 ## Introduction
 
 This repository is the python technical assignment for DLG. The README contains the assumptions and all the points I consider worth of notice with my take on them. 
